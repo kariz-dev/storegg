@@ -1,8 +1,12 @@
+import Head from "next/head";
 import React from "react";
 
 export default function detail() {
   return (
     <>
+      <Head>
+        <title>Detail Page</title>
+      </Head>
       <section className="detail pt-lg-60 pb-50">
         <div className="container-xxl container-fluid">
           <div className="detail-header pb-50">
