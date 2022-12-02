@@ -1,5 +1,7 @@
 import Head from "next/head";
 import React from "react";
+import Footer from "../../components/organisms/Footer";
+import Navbar from "../../components/organisms/Navbar";
 import TopUpForm from "../../components/organisms/TopUpForm";
 import TopUpItem from "../../components/organisms/TopUpItem";
 
@@ -9,6 +11,7 @@ export default function detail() {
       <Head>
         <title>Detail Page</title>
       </Head>
+      <Navbar />
       <section className="detail pt-lg-60 pb-50">
         <div className="container-xxl container-fluid">
           <div className="detail-header pb-50">
@@ -31,6 +34,7 @@ export default function detail() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
