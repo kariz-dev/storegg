@@ -1,14 +1,16 @@
 import React from "react";
 import Image from "next/image";
 import cx from "classnames";
+import Link from "next/link";
 
 interface MenuItemProps {
   title: string;
   active?: boolean;
+  href: string;
 }
 
 export default function MenuItem(props: Partial<MenuItemProps>) {
-  const { title, active } = props;
+  const { title, active, href = '/member' } = props;
   const classItem = cx({
     item: true,
     "mb-30": true,
@@ -24,9 +26,9 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
         height={25}
       />
       <p className="item-title m-0">
-        <a href="" className="text-lg text-decoration-none">
+        <Link href={href} aria-current="page" className="text-lg text-decoration-none">
           {title}
-        </a>
+        </Link>
       </p>
     </div>
   );
