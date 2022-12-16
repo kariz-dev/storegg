@@ -5,9 +5,15 @@ export default function Illustration() {
     <div className="col-lg-6 col-12 d-lg-block d-none">
       <div className="d-flex justify-content-lg-end justify-content-center me-lg-5">
         <div className="position-relative" data-aos="zoom-in">
-          <picture>
-            <img src="/img/Header-1.png" className="img-fluid" alt="" />
-          </picture>
+          <Image
+            src="/img/Header-1.png"
+            className="img-fluid"
+            priority={true}
+            width={480}
+            height={475}
+            quality="50"
+            alt="header"
+          />
           <div className="card left-card position-absolute border-0">
             <div className="d-flex align-items-center mb-16 gap-3">
               <picture>
@@ -16,6 +22,8 @@ export default function Illustration() {
                   width={40}
                   height={40}
                   className="rounded-pill"
+                  loading="lazy"
+                  quality="50"
                   alt="User"
                 />
               </picture>
@@ -29,18 +37,62 @@ export default function Illustration() {
               </div>
             </div>
             <div className="d-flex gap-2">
-              <Image src="/icon/star.svg" alt="star" width={24} height={22} />
-              <Image src="/icon/star.svg" alt="star" width={24} height={22} />
-              <Image src="/icon/star.svg" alt="star" width={24} height={22} />
-              <Image src="/icon/star.svg" alt="star" width={24} height={22} />
-              <Image src="/icon/star.svg" alt="star" width={24} height={22} />
+              <Image
+                src="/icon/star.svg"
+                alt="star"
+                width={24}
+                height={22}
+                loading="lazy"
+                quality="50"
+              />
+              <Image
+                src="/icon/star.svg"
+                alt="star"
+                width={24}
+                height={22}
+                loading="lazy"
+                quality="50"
+              />
+              <Image
+                src="/icon/star.svg"
+                alt="star"
+                width={24}
+                height={22}
+                loading="lazy"
+                quality="50"
+              />
+              <Image
+                src="/icon/star.svg"
+                alt="star"
+                width={24}
+                height={22}
+                loading="lazy"
+                quality="50"
+              />
+              <Image
+                src="/icon/star.svg"
+                alt="star"
+                width={24}
+                height={22}
+                loading="lazy"
+                quality="50"
+              />
             </div>
           </div>
           <div className="card right-card position-absolute border-0">
             <div className="position-relative d-flex flex-row justify-content-center mb-24">
-              <picture>
+              {/* <picture>
                 <img src="/img/Header-3.png" className="rounded-pill" alt="" />
-              </picture>
+              </picture> */}
+              <Image
+                src="/img/Header-1.png"
+                className="rounded-pill"
+                priority={true}
+                width={80}
+                height={80}
+                quality="50"
+                alt="header"
+              />
               <p className="right-card-support text-white text-xxs text-center position-absolute m-0">
                 New
               </p>

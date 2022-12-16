@@ -15,7 +15,6 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
     active,
   });
   return (
-    // "item active mb-30"
     <div className={classItem}>
       <Image
         className="icon me-3"

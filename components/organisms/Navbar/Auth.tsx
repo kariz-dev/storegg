@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface AuthProps {
@@ -19,11 +20,13 @@ export default function Auth(props: Partial<AuthProps>) {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <img
+            <Image
               src="/img/avatar-1.png"
               className="rounded-circle"
-              width="40"
-              height="40"
+              width={40}
+              height={40}
+              loading="lazy"
+              quality="50"
               alt=""
             />
           </a>
