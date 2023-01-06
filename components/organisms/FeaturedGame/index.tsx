@@ -1,6 +1,24 @@
+import { Fragment, useEffect, useState } from "react";
 import GameItem from "../../molecules/GameItem";
 
 export default function FeaturedGame() {
+  const [gameList, setGameList] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const getGameList = async () => {
+    setLoading(true);
+    const response = await fetch(
+      "http://localhost:4000/api/v1/players/landingpage"
+    );
+    const data = await response.json();
+    setGameList(data.data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getGameList();
+  }, []);
+
   return (
     <section className="featured-game pt-50 pb-50">
       <div className="container-fluid">
@@ -12,31 +30,20 @@ export default function FeaturedGame() {
           className="d-flex flex-row flex-lg-wrap overflow-setting justify-content-lg-between gap-lg-3 gap-4"
           data-aos="fade-up"
         >
-          <GameItem
-            thumbnail="Thumbnail-1"
-            title="Super Mechs"
-            category="Mobile"
-          />
-          <GameItem
-            thumbnail="Thumbnail-2"
-            title="Call of Duty: Modern"
-            category="Mobile"
-          />
-          <GameItem
-            thumbnail="Thumbnail-3"
-            title="Mobile Legends"
-            category="Mobile"
-          />
-          <GameItem
-            thumbnail="Thumbnail-4"
-            title="Clash of Clans"
-            category="Mobile"
-          />
-          <GameItem
-            thumbnail="Thumbnail-5"
-            title="Valorant"
-            category="Desktop"
-          />
+          {loading ? (
+            <Fragment>loading..</Fragment>
+          ) : (
+            gameList.map((item) => (
+              <Fragment>
+                <GameItem
+                  key={item._id}
+                  thumbnail={item.thumbnail}
+                  title={item.name}
+                  category={item.category.name}
+                />
+              </Fragment>
+            ))
+          )}
         </div>
       </div>
     </section>
