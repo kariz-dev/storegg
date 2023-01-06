@@ -1,22 +1,17 @@
-import { Fragment, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { getFeaturedGame } from "../../../services/player";
 import GameItem from "../../molecules/GameItem";
 
 export default function FeaturedGame() {
   const [gameList, setGameList] = useState<any[]>([]);
-  const [loading, setLoading] = useState(false);
 
-  const getGameList = async () => {
-    setLoading(true);
-    const response = await fetch(
-      "http://localhost:4000/api/v1/players/landingpage"
-    );
-    const data = await response.json();
-    setGameList(data.data);
-    setLoading(false);
-  };
+  const getFeaturedGameList = useCallback(async () => {
+    const data = await getFeaturedGame();
+    setGameList(data);
+  }, [getFeaturedGame]);
 
   useEffect(() => {
-    getGameList();
+    getFeaturedGameList();
   }, []);
 
   return (
@@ -30,20 +25,16 @@ export default function FeaturedGame() {
           className="d-flex flex-row flex-lg-wrap overflow-setting justify-content-lg-between gap-lg-3 gap-4"
           data-aos="fade-up"
         >
-          {loading ? (
-            <Fragment>loading..</Fragment>
-          ) : (
-            gameList.map((item) => (
-              <Fragment>
-                <GameItem
-                  key={item._id}
-                  thumbnail={item.thumbnail}
-                  title={item.name}
-                  category={item.category.name}
-                />
-              </Fragment>
-            ))
-          )}
+          {gameList.map((item) => {
+            return (
+              <GameItem
+                key={item._id}
+                thumbnail={item.thumbnail}
+                title={item.name}
+                category={item.category.name}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
